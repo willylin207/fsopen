@@ -25,8 +25,7 @@ const App = () => {
       ({anecdote, votes}, i) => i === selected
       ? ({"anecdote": anecdote, "votes": votes + 1})
       : ({"anecdote": anecdote, "votes": votes})))
-  const anecdoteWithMostVotes = anecdoteVotes.reduce((acc, curr) => curr.votes > acc.votes ? curr : acc)
-                                             .anecdote
+  const bestAnecdoteVotes = anecdoteVotes.reduce((acc, curr) => curr.votes > acc.votes ? curr : acc)
 
   return (
     <div>
@@ -40,7 +39,8 @@ const App = () => {
       </section>
       <section>
         <h2>Anecdote with most votes</h2>
-        {anecdoteWithMostVotes}
+        <p>{bestAnecdoteVotes.anecdote}</p>
+        <p>has {bestAnecdoteVotes.votes} votes</p>
       </section>
     </div>
   )
